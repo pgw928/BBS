@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{%block container%}
+<div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form  comment_form %}
+        <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+</div>
+{%endblock%}

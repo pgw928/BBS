@@ -1,0 +1,25 @@
+{%extends "base.html" %}
+{%block container %}
+<div class="col-4 text-center justify-content-end align-items-center">
+    <h1>{{post.title}}</h1>
+    <p class="blog-post-meta">{{post.date}} by {{post.author}}</p>
+
+</div>
+
+
+<hr>
+<p>{{post.contents |linebreaksbr}}</p>
+<br><br>
+<hr>
+<ul>
+    {%for comment in post.comment_set.all%}
+    <li>
+        {{comment.contents}} by {{comment.author}}
+        <a href="{%url 'posts:upgrade2' comment.id%}">수정</a>
+        <a href="{%url 'posts:delete2' comment.id%}" >삭제</a>
+    </li>
+    {%endfor%}
+</ul>
+<a href="{%url 'posts:comment' post.id%}" class="btn btn-primary">댓글 작성</a>
+
+{%endblock%}
